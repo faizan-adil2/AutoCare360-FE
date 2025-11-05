@@ -3,12 +3,13 @@
     "name": "Muhammad Faizan Adil",
     "email": "adilmuhammadfaizan@gmail.com",
     "password": "faizan",
-    "token": "82aaaac14845a2b0"
+    "token": "82aaaac14845a2b0",
+    "resetToken": "b63d653a25b19ab0"
   },
   {
     "name": "Muhammad Faizan Adil IU09-0322-9025",
     "email": "iu09-0322-9025@iqra.edu.pk",
-    "password": "faizan",
+    "password": "faizan12345",
     "token": "61cb4e8fdf98fd21"
   }
 ]
