@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Car, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,13 +25,13 @@ export default function LoginPage() {
       });
       const data = await res.json();
       if (data.success) {
-        alert(`✅ Welcome ${data.user.name} to AutoCare360!`);
+        toast.success(`👋 Welcome ${data.user.name} to AutoCare360!`);
       } else {
-        alert(`❌ ${data.message}`);
+        toast.error(`❌ ${data.message}`);
       }
     } catch (err) {
       console.error(err);
-      alert('⚠️ Network or server error. Please try again.');
+      toast.error('⚠️ Network or server error. Please try again.');
     }
   };
 

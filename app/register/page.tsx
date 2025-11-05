@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Car, Mail, Lock, User, Eye, EyeOff } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,10 +19,6 @@ export default function RegisterPage() {
     e.preventDefault();
     const { name, email, password, confirmPassword } = formData;
 
-    if (password !== confirmPassword) {
-      alert('Passwords do not match!');
-      return;
-    }
     try {
       const res = await fetch('/api/register', {
         method: 'POST',
@@ -30,14 +27,15 @@ export default function RegisterPage() {
       });
 
       const data = await res.json();
+
       if (data.success) {
-        alert(`✅ ${data.message}\nToken: ${data.user.token}`);
+        toast.success(`✅ ${data.message}\nToken: ${data.user.token}`);
       } else {
-        alert(`❌ ${data.message}`);
+        toast.error(`❌ ${data.message}`);
       }
     } catch (err) {
       console.error(err);
-      alert('⚠️ Network or server error. Please try again.');
+      toast.error('⚠️ Network or server error. Please try again.');
     }
   };
 
